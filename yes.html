@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAY! 🥰</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="card">
+        <h1 style="font-size: 4rem;">🎉💖</h1>
+        <h1>I knew you'd say Yes!</h1>
+        <p style="font-style: italic;">I'm the lucky man to have you in my life darling.</p>
+        
+        <button onclick="location.href='thanks.html'" style="background: #d81b60; color: white;">
+            I have something for you... 🎁
+        </button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        confetti({
+            particleCount: 1500,
+            spread: 700,
+            origin: { y: 0.6 }
+        });
+    </script>
+</body>
+</html>

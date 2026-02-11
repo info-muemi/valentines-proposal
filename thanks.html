@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> She said yes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="card thanks-card">
+        
+        <div id="flower-stage">
+            <div style="font-size: 4rem; text-align: center;">💐</div>
+            <h1 style="text-align: center; font-style: italic;">These are for you...</h1>
+            <img src="4009932.jpg" alt="Flowers" class="gift-img">
+        </div>
+
+        <div id="letter-stage" style="display: none; opacity: 0;">
+            <h2 style="font-style: italic;">To My Favorite Person And My Lover</h2>
+            <div class="custom-message">
+                <p>Hey Wambo</p>
+                <p>I wanted to build something unique because a simple text wouldn't do justice to how I feel. You've been such an amazing part of my journey, and having you say "Yes" means everything to me.</p>
+                <p>I'm so excited for everything that comes next. Thank you for being you and supporting my dreams.</p>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <p style="font-style: italic; margin-bottom: 0;">Always yours,</p>
+                    <p class="name-signature">Muemi Chege</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.onload = () => {
+            const flowerStage = document.getElementById('flower-stage');
+            const letterStage = document.getElementById('letter-stage');
+
+            setTimeout(() => {
+                flowerStage.style.transition = "opacity 1s ease, transform 1s ease";
+                flowerStage.style.opacity = "0";
+                flowerStage.style.transform = "scale(0.9)";
+                
+                setTimeout(() => {
+                    flowerStage.style.display = 'none';
+                    letterStage.style.display = 'block';
+                    setTimeout(() => {
+                        letterStage.style.transition = "opacity 1.5s ease";
+                        letterStage.style.opacity = "1";
+                    }, 50);
+                }, 1000);
+            }, 4000); // Flowers stay for 4 seconds
+        };
+    </script>
+</body>
+</html>

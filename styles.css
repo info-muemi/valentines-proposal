@@ -1,0 +1,162 @@
+/* 1. TYPOGRAPHY & CORE CONFIG */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&family=Playfair+Display:ital,wght@1,700&display=swap');
+
+:root {
+    --primary: #ff4d8d;
+    --primary-dark: #c2185b;
+    --bg-soft: #fff5f7;
+    --glass: rgba(255, 255, 255, 0.75);
+    --shadow: 0 20px 40px rgba(255, 77, 141, 0.12);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background: var(--bg-soft);
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for mobile browsers */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    padding: env(safe-area-inset-top) 24px env(safe-area-inset-bottom); /* Respects notches */
+    background-image: radial-gradient(at 0% 0%, hsla(341,100%,95%,1) 0, transparent 50%), 
+                      radial-gradient(at 100% 100%, hsla(341,100%,92%,1) 0, transparent 50%);
+}
+
+/* 2. THE PREMIUM GLASS CARD */
+.card {
+    background: var(--glass);
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    padding: 3rem 2rem;
+    border-radius: 40px;
+    text-align: center;
+    width: 100%;
+    max-width: 420px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    animation: slideIn 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* 3. IMAGES (Modern Squircle) */
+.image-container {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 2.5rem;
+}
+
+
+
+.prop-img {
+    width: 90px;
+    height: 90px;
+    border-radius: 28px; /* Smooth iOS Squircle */
+    object-fit: cover;
+    border: 3px solid #fff;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+/* 4. TYPOGRAPHY */
+h1, h2, .slanted {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--primary-dark);
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+}
+
+p {
+    color: #6d5d6e;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+}
+
+/* 5. BUTTONS (Haptic Feel) */
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 2.5rem;
+}
+
+button {
+    height: 64px; /* Optimal thumb size */
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 22px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#yesBtn {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 12px 24px rgba(255, 77, 141, 0.3);
+}
+
+#noBtn {
+    background: #fff;
+    color: #9e9e9e;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+button:active {
+    transform: scale(0.94); /* Haptic press effect */
+    filter: brightness(0.9);
+}
+
+/* 6. THE LETTER (Final Page) */
+.thanks-card {
+    text-align: left;
+    background: #fff;
+    border-left: 6px solid var(--primary);
+}
+
+.custom-message p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.name-signature {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--primary);
+    transform: rotate(-4deg);
+    margin-top: 20px;
+    display: inline-block;
+}
+
+/* 7. CELEBRATION BG (Page 2) */
+.celebration-page {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                url('images/her2.jpg') center/cover no-repeat;
+}
+
+/* 8. ANIMATIONS */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(60px) scale(0.9); filter: blur(10px); }
+    to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+/* Tiny Screen Optimization */
+@media (max-width: 375px) {
+    .card { padding: 2rem 1.5rem; }
+    h1 { font-size: 1.7rem; }
+}
