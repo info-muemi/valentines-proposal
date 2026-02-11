@@ -36,4 +36,23 @@ noBtn.addEventListener('mouseover', handleNoAction);
 noBtn.addEventListener('touchstart', (e) => {
     e.preventDefault(); // Prevents the actual click from happening
     handleNoAction();
+
+});
+const noBtn = document.getElementById('noBtn');
+
+noBtn.addEventListener('mouseover', () => {
+    // 1. Calculate the available width and height of the window
+    // We subtract 150px to ensure the button doesn't hit the very edge
+    const maxX = window.innerWidth - 150;
+    const maxY = window.innerHeight - 150;
+    
+    // 2. Generate random positions within those bounds
+    // We use Math.max to ensure the number isn't negative
+    const x = Math.max(20, Math.floor(Math.random() * maxX));
+    const y = Math.max(20, Math.floor(Math.random() * maxY));
+    
+    // 3. Apply the new position
+    noBtn.style.position = 'fixed'; // 'fixed' is better for staying in view
+    noBtn.style.left = `${x}px`;
+    noBtn.style.top = `${y}px`;
 });
