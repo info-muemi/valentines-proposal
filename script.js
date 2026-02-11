@@ -4,55 +4,51 @@ const yesBtn = document.getElementById('yesBtn');
 let yesScale = 1;
 let noClicks = 0;
 
-// Function to move the button and grow the 'Yes' button
-const handleNoAction = () => {
-    // 1. Calculate safe boundaries so it doesn't leave the screen
-    // We use window.innerWidth/Height to stay within the phone's view
-    const padding = 50;
-    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - padding);
-    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - padding);
+const handleNoAction = (e) => {
+    if (e) e.preventDefault(); // Stop mobile taps from clicking the button
 
-    // 2. Apply the new position
-    // Using 'fixed' ensures it stays relative to the screen, not the card
+    // 1. Get the button's size to keep it fully on screen
+    const btnWidth = noBtn.offsetWidth;
+    const btnHeight = noBtn.offsetHeight;
+
+    // 2. Set a safe margin from the edges (80px)
+    const margin = 80;
+
+    // 3. Calculate the actual walkable area of the screen
+    const maxX = window.innerWidth - btnWidth - margin;
+    const maxY = window.innerHeight - btnHeight - margin;
+
+    // 4. Generate random position within the safe area
+    // Math.max ensures we don't get a position less than the margin
+    const randomX = Math.max(margin, Math.floor(Math.random() * maxX));
+    const randomY = Math.max(margin, Math.floor(Math.random() * maxY));
+
+    // 5. Apply style changes
     noBtn.style.position = 'fixed';
-    noBtn.style.left = `${Math.max(padding, x)}px`;
-    noBtn.style.top = `${Math.max(padding, y)}px`;
+    noBtn.style.left = `${randomX}px`;
+    noBtn.style.top = `${randomY}px`;
+    noBtn.style.zIndex = '9999'; // Stay on top of everything
 
-    // 3. Make the YES button bigger every time she tries to say No
-    yesScale += 0.2;
+    // 6. Grow the Yes Button
+    yesScale += 0.25;
     yesBtn.style.transform = `scale(${yesScale})`;
-    
-    // 4. Update the 'No' button text for a little humor
+    yesBtn.style.zIndex = '1000'; // Ensure Yes stays visible too
+
+    // 7. Funny text updates
     noClicks++;
     if (noClicks === 2) noBtn.innerText = "Are you sure? 🥺";
-    if (noClicks === 4) noBtn.innerText = "You're playing hard to get! 😂";
-    if (noClicks >= 6) noBtn.innerText = "Just click Yes already! ❤️";
+    if (noClicks === 4) noBtn.innerText = "Wrong button! 😂";
+    if (noClicks >= 6) noBtn.innerText = "Just click Yes! ❤️";
 };
 
-// Mouse move for laptops
+// Desktop: Jumps when the mouse touches it
 noBtn.addEventListener('mouseover', handleNoAction);
 
-// Touch start for iPhones/Androids (The "No" jumps before she can tap)
-noBtn.addEventListener('touchstart', (e) => {
-    e.preventDefault(); // Prevents the actual click from happening
+// Mobile: Jumps when the finger touches it
+noBtn.addEventListener('touchstart', handleNoAction);
+
+// Click fallback: If they somehow manage to click it
+noBtn.addEventListener('click', (e) => {
+    e.preventDefault();
     handleNoAction();
-
-});
-const noBtn = document.getElementById('noBtn');
-
-noBtn.addEventListener('mouseover', () => {
-    // 1. Calculate the available width and height of the window
-    // We subtract 150px to ensure the button doesn't hit the very edge
-    const maxX = window.innerWidth - 150;
-    const maxY = window.innerHeight - 150;
-    
-    // 2. Generate random positions within those bounds
-    // We use Math.max to ensure the number isn't negative
-    const x = Math.max(20, Math.floor(Math.random() * maxX));
-    const y = Math.max(20, Math.floor(Math.random() * maxY));
-    
-    // 3. Apply the new position
-    noBtn.style.position = 'fixed'; // 'fixed' is better for staying in view
-    noBtn.style.left = `${x}px`;
-    noBtn.style.top = `${y}px`;
 });
