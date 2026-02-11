@@ -253,4 +253,9 @@ button:active {
 .back-btn span {
     margin-right: 8px;
 }
+#noBtn {
+    position: fixed; /* This is key! */
+    z-index: 9999 !important; /* Forces it to stay in front of the card */
+    transition: all 0.2s ease; /* Makes the jump look smooth but fast */
+}
 
