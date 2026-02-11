@@ -194,3 +194,41 @@ button:active {
     justify-content: center;
     align-items: center;
 }
+
+<style>
+    /* This ensures everything stays in a neat vertical line */
+    #flower-stage {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+    }
+
+    .flower-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin: 15px 0;
+    }
+
+    .main-flower-img {
+        /* Responsive width that leaves room for the card padding */
+        width: 85%; 
+        max-width: 280px;
+        height: auto; /* Changed from 220px to auto so it doesn't crop weirdly */
+        object-fit: contain; 
+        border-radius: 24px;
+        border: 4px solid #fff;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    /* Making sure your "These are for you" text is bold and visible */
+    h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.8rem;
+        color: #c2185b;
+        margin-top: 10px;
+    }
+</style>
