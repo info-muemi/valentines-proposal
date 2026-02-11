@@ -3,22 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> She said yes</title>
+    <title>She said yes</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* This ensures the image stays inside the box and looks sharp */
+        .flower-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .main-flower-img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover; /* Prevents stretching */
+            border-radius: 40px; /* Matching your squircle style */
+            border: 5px solid #fff;
+            box-shadow: 0 10px 25px rgba(255, 77, 141, 0.2);
+        }
+    </style>
 </head>
-<body>
+<body class="celebration-page">
     <div class="card thanks-card">
         
         <div id="flower-stage">
-            <div style="font-size: 4rem; text-align: center;">💐</div>
-            <h1 style="text-align: center; font-style: italic;">These are for you...</h1>
-        <img src="4009932.jpg" alt="Flowers" class="prop-img" style="width: 200px; height: auto; margin: 0 auto;">
+            <div style="font-size: 3.5rem; text-align: center; margin-bottom: 10px;">💐</div>
+            <h1 style="text-align: center; font-family: 'Playfair Display', serif;">These are for you...</h1>
+            
+            <div class="flower-container">
+                <img src="4009932.jpg" alt="Flowers" class="main-flower-img">
+            </div>
         </div>
 
         <div id="letter-stage" style="display: none; opacity: 0;">
             <h2 style="font-style: italic;">To My Favorite Person And My Lover</h2>
             <div class="custom-message">
-                <p>Hey Wambo</p>
+                <p>Hey Wambo,</p>
                 <p>I wanted to build something unique because a simple text wouldn't do justice to how I feel. You've been such an amazing part of my journey, and having you say "Yes" means everything to me.</p>
                 <p>I'm so excited for everything that comes next. Thank you for being you and supporting my dreams.</p>
                 
@@ -35,6 +56,7 @@
             const flowerStage = document.getElementById('flower-stage');
             const letterStage = document.getElementById('letter-stage');
 
+            // Wait 4 seconds, then transition to the letter
             setTimeout(() => {
                 flowerStage.style.transition = "opacity 1s ease, transform 1s ease";
                 flowerStage.style.opacity = "0";
@@ -48,9 +70,8 @@
                         letterStage.style.opacity = "1";
                     }, 50);
                 }, 1000);
-            }, 4000); // Flowers stay for 4 seconds
+            }, 4000); 
         };
     </script>
 </body>
-
 </html>
